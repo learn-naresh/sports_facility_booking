@@ -1,40 +1,34 @@
 # Seed Facilities
-facilities = Facility.create([
-  {
-    name: 'Football',
-    description: 'State-of-the-art sports complex with various facilities',
-    location: '123 Main Street, CityA',
-    sports: 'Football',
-    pincode: '12345'
-  },
-  {
-    name: 'Tennis',
-    description: 'Professional tennis courts with coaching services',
-    location: '456 Park Avenue, CityB',
-    sports: 'Tennis',
-    pincode: '67890'
-  },
-  {
-    name: 'Gym',
-    description: 'Fully-equipped gym for fitness enthusiasts',
-    location: '789 Elm Street, CityC',
-    sports: 'Gym',
-    pincode: '54321'
-  }
-])
+facilities = []
+50.times do |i|
+  facilities << Facility.create(
+    name: "Facility #{i + 1}",
+    description: "Description for Facility #{i + 1}",
+    location: "Location #{i + 1}",
+    sports: "Sports #{i + 1}",
+    pincode: "#{rand(10000..99999)}"
+  )
+end
 
 # Seed Users
-users = User.create([
-  { name: 'John Doe', email: 'john@example.com', password: 'password' },
-  { name: 'Jane Doe', email: 'jane@example.com', password: 'password' },
-  { name: 'Alice Smith', email: 'alice@example.com', password: 'password' }
-])
+users = []
+50.times do |i|
+  users << User.create(
+    name: "User #{i + 1}",
+    email: "user#{i + 1}@example.com",
+    password: 'password'
+  )
+end
 
 # Seed Bookings
-bookings = Booking.create([
-  { user: users[0], facility: facilities[0], date: Date.today, slot: 10 },
-  { user: users[1], facility: facilities[1], date: Date.today + 1, slot: 14 },
-  { user: users[2], facility: facilities[2], date: Date.today + 2, slot: 18 }
-])
+bookings = []
+50.times do |i|
+  bookings << Booking.create(
+    user: users.sample,
+    facility: facilities.sample,
+    date: Date.today + rand(1..30),
+    slot: rand(1..24)
+  )
+end
 
 puts 'Seed data created successfully!'
