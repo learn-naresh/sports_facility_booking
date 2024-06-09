@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :facilities, only: [:index, :show]
   get 'bookings/available_slots', to: 'bookings#available_slots'
   resources :bookings, only: [:create, :show]
+  resources :users, only: [:show, :update]
   post 'register', to: 'users#register'
   post 'login', to: 'users#login'
 end
