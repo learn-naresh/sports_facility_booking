@@ -30,13 +30,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    user = User.find(params[:id])
-    render json: user, status: :ok
+    @user = User.find(params[:id])
+    render json: @user, serializer: V1::UserSerializer, status: :ok
   end
   
   def update
     user = User.find(params[:id])
-    if user.update(user_params)
+    if user.update!(user_params)
       render json: user, status: :ok
     else
       render json: user.errors, status: :unprocessable_entity

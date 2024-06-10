@@ -16,6 +16,7 @@ gem 'rack-cors'
 
 gem 'jwt', '~> 2.2'
 
+gem 'active_model_serializers', '~> 0.10.2'
 
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
